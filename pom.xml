@@ -48,52 +48,34 @@
     </dependencies>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.16.0</version>
-                <configuration>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                </configuration>
-<!--                <dependencies>-->
-<!--                    &lt;!&ndash; https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-hibernate4 &ndash;&gt;-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.liquibase.ext</groupId>-->
-<!--                        <artifactId>liquibase-hibernate4</artifactId>-->
-<!--                        <version>3.6</version>-->
-<!--                    </dependency>-->
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                        </configuration>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-<!--                    <dependency>-->
-<!--                        <groupId>org.springframework</groupId>-->
-<!--                        <artifactId>spring-beans</artifactId>-->
-<!--                        <version>4.1.7.RELEASE</version>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.springframework.data</groupId>-->
-<!--                        <artifactId>spring-data-jpa</artifactId>-->
-<!--                        <version>1.7.3.RELEASE</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-            </plugin>
-        </plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M7</version>
+                </plugin>
+            </plugins>
+
+
+
     </build>
 
 </project>
